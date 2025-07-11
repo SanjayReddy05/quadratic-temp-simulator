@@ -1,2 +1,24 @@
 # quadratic-temp-simulator
-tempearture prediction using quadratic model
+#temperature prediction using quadratic model
+import numpy as np
+
+
+x = [6, 8, 12]
+y = [20, 22, 32]
+
+
+A = [
+    [x[0]**2, x[0], 1],
+    [x[1]**2, x[1], 1],
+    [x[2]**2, x[2], 1]
+]
+
+a, b, c = np.linalg.solve(A, y)
+
+def temperature_at(hour):
+    return a * hour**2 + b * hour + c
+
+
+print(f"Temperature model: T(x) = {a:.4f}x² + {b:.4f}x + {c:.4f}")
+
+
