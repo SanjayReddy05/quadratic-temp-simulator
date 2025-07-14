@@ -1,18 +1,24 @@
 import numpy as np
 
-
-x = [6, 8, 12]
-y = [20, 22, 32]
+x1, x2, x3 = 6, 8, 12
+y1, y2, y3 = 20, 22, 32
 
 A = [
-    [x[0]**2, x[0], 1],
-    [x[1]**2, x[1], 1],
-    [x[2]**2, x[2], 1]
+    [x1**2, x1, 1],
+    [x2**2, x2, 1],
+    [x3**2, x3, 1]
 ]
-c
+y = [y1, y2, y3]
 a, b, c = np.linalg.solve(A, y)
 
-def temperature_at(hour):
-    return a * hour**2 + b * hour + c
 
-print(f"Temperature model: T(x) = {a:.4f}x² + {b:.4f}x + {c:.4f}")
+try:
+    hour = float(input("Enter the time of day to predict temperature (0–24): "))
+    if 0 <= hour <= 24:
+        temperature = a * hour**2 + b * hour + c
+        print(f"Predicted temperature at {hour:02.1f}:00 is {temperature:.2f}°C")
+    else:
+        print("Please enter a time between 0 and 24.")
+except ValueError:
+    print("Invalid input. Please enter a number (like 7 or 14.5).")
+
